@@ -7,7 +7,7 @@ TEAM MEMBERS
 
 ROLES
 - Benjamin Fischer: Calendar and Time
-- Nathaniel Rawskins: Weather and Health information
+- Nathanael Roskens: Weather and Health information
 - Ti'Ara Carroll: Music/playlist api
 - Mauricio Barbier: News Feed api
 - Bonny Barragan:Text Message api
