@@ -16,6 +16,6 @@ SKETCH
 <insert .png sketch UI>
   
 
-Main Functions
+Main Functions:
 
-Next Steps
+Next Steps:
