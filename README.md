@@ -6,12 +6,11 @@ TEAM MEMBERS
 <insert .png group photo>
 
 ROLES
-
-Benjamin Fischer
-Nathaniel Rawskins 
-Ti'Ara Carroll
-Mauricio Barbier
-Bonny Barragan
+- Benjamin Fischer
+- Nathaniel Rawskins 
+- Ti'Ara Carroll
+- Mauricio Barbier
+- Bonny Barragan
 
 SKETCH
 
