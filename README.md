@@ -6,11 +6,11 @@ TEAM MEMBERS
 <insert .png group photo>
 
 ROLES
-- Benjamin Fischer
-- Nathaniel Rawskins 
-- Ti'Ara Carroll
-- Mauricio Barbier
-- Bonny Barragan
+- Benjamin Fischer: Calendar and Time
+- Nathaniel Rawskins: Weather and Health information
+- Ti'Ara Carroll: Music/playlist api
+- Mauricio Barbier: News Feed api
+- Bonny Barragan:Text Message api
 
 SKETCH
 
@@ -19,6 +19,7 @@ SKETCH
 
 
 
-Main Functions:
 
-Next Steps:
+NEXT STEPS
+- Revisions to design
+- Implementation and testing 
