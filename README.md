@@ -21,5 +21,5 @@ SKETCH
 
 
 NEXT STEPS
-- Revisions to design
+- Revisions to design (levels of interaction between user and interface)
 - Implementation and testing 
