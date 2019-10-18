@@ -2,9 +2,11 @@
 Project 1: Personal Mirror 
 
 TEAM MEMBERS
+Team Members already had pre obligations before this group photo was a requirement so here is our team photo. Enjoy!
+  
 
 ![Screen Shot 2019-10-17 at 8 04 57 PM](https://user-images.githubusercontent.com/36643475/67058223-81764900-f119-11e9-8e87-1841d86c5aa4.png)
-Team Members already had pre obligations before this group photo was a requirement so here is our team photo. Enjoy!
+
   
 ROLES
 - Benjamin Fischer: Calendar and Time
