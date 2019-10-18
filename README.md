@@ -4,7 +4,7 @@ Project 1: Personal Mirror
 TEAM MEMBERS
 
 <insert .png group photo>
-![](https://user-images.githubusercontent.com/36643475/67057993-6b1bbd80-f118-11e9-9c0d-f4bd8205479a.JPG = 100x100)
+![Screen Shot 2019-10-17 at 8 04 57 PM](https://user-images.githubusercontent.com/36643475/67058223-81764900-f119-11e9-8e87-1841d86c5aa4.png)
   
 ROLES
 - Benjamin Fischer: Calendar and Time
