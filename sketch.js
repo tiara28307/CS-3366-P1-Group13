@@ -1,6 +1,7 @@
 let capture;
 let newsData;
 var newsState = -1;
+var weather;
 
 function preload(){
   //URL for JSON data API's
@@ -9,7 +10,7 @@ function preload(){
   
   //Loading data
   newsData = loadJSON(urlNews);
-  // weatherData = loadJSON(urlWeather);
+  //weatherData = loadJSON(urlWeather);
 }
 
 function setup() {
@@ -19,6 +20,8 @@ function setup() {
   capture.hide();
   textSize(14);
   fill(255);
+  
+  weather = Math.floor(Math.random() * 10)+55;
   
 }
 
@@ -34,15 +37,19 @@ function draw() {
   
   //Weather
   //getWeather(weatherData);
+  textSize(14);
+  text(weather+" °F",20,36);
+  topThree(newsData);
   
   //NewsFeed
   getArticle(newsData,newsState);
   // print(mouseX);
+
   
 }
 
 function mousePressed(){
-  if(mouseY>=30 && mouseY<=120 && mouseX>=280 && mouseX<=400){
+  if(mouseY>=30 && mouseY<=150 && mouseX>=280 && mouseX<=400){
     if(mouseY>=30 && mouseY<=60){
       if(mouseX>=280 && mouseX<=400){
         newsState = 0;
@@ -56,6 +63,11 @@ function mousePressed(){
     if(mouseY>=90 && mouseY<=120){
       if(mouseX>=280 && mouseX<=400){
         newsState = 2;
+       }
+    }
+    if(mouseY>=120 && mouseY<=150){
+      if(mouseX>=280 && mouseX<=400){
+        newsState = 3;
        }
     }
   }
@@ -91,7 +103,9 @@ function getArticle(data,i){
   textSize(12);
   textStyle(NORMAL);
   var content = data.articles[i].content
-  text(content, 55,120,330,390);
+  if(content!=null){
+    text(content, 55,120,330,390);
+  }
   
   //Description
   textSize(12);
@@ -125,7 +139,7 @@ function topThree(data){
   text("News",290,20);
   var count = 30;
   
-  for(var i = 0; i<3; i++){
+  for(var i = 0; i<4; i++){
     var titles = data.articles[i].title;
     
     if(titles.length>34){
@@ -137,6 +151,9 @@ function topThree(data){
     text(titles, 290,count,120,30);
     count+=30;
   }
+  strokeWeight(.8);
+  stroke(255);
+  line(280, 150, 400, 150);
 }
 
 function gotData(data){
