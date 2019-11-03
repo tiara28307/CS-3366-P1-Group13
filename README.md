@@ -26,3 +26,24 @@ SKETCH
 NEXT STEPS
 - Revisions to design (levels of interaction between user and interface)
 - Implementation and testing 
+
+# CS-3366-P1-Group13
+Project 1: Personal Mirror 
+
+TEAM MEMBERS
+- Maricio Barbier
+- Bonny Barragan
+- Ti'ara Carroll
+- Benjamin Fischer
+- Nathanael Roskens
+
+## GOLDEN RULES OF DESIGN
+### CONSISTENCY
+ - Same circular shaped icons for unified design
+ - Widgets have same rounded edge motif for familiarity
+### FEEDBACK 
+ - Widgets instantly pop in or exit for snappy feedback
+### SHORT TERM MEMORY LOAD
+ - Actions do not take more than a simple click or swipe
+### ERROR HANDLING
+ - User experience is enhanced by being shown error rather than having system crashing 
