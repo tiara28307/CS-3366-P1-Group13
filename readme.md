@@ -17,7 +17,7 @@ ROLES
 - Nathanael Roskens: Health information
 - Ti'Ara Carroll: Spotify and Weather api
 - Mauricio Barbier: News Feed api and Time 
-- Bonny Barragan:Twitter api and Toggles
+- Bonny Barragan: Twitter api and Toggles
 
 ORIGINAL SKETCH
 ![p1 13](https://user-images.githubusercontent.com/36643475/66956180-92e02800-f029-11e9-832d-71a9d374182f.png)
