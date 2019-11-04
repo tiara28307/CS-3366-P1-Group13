@@ -1,308 +1,228 @@
 let capture;
 let newsData;
 var newsState = -1;
-
-var canvas;
-var click1;
-let v1 = 0;
-let v2 = 0;
-let s1pic, s2pic;
-var clicks = 0;
+var weather;
+var twitterButton;
+var newsButton;
+var twitterState = 1;
+var newsState2 = 1;
+var calendarButton;
+var calendarState = 1;
+var spotifyButton;
+var spotifyState = 1;
+var healthState = -1;
+var healthButton;
+var healthButState = 1;
+let finessData;
+var step_int = 0;
+let sleepyTime = 15;
+var step_img;
+var bed_img;
+var total_step = 0;
+let steps = 2300;
+let values = [0,0,0,0,0,0,0]
+let auth = '';
+let inp;
+let bathImg;
 
 function preload(){
   //URL for JSON data API's
   let urlNews = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=da22bf531795458d9a190346f5d06f9a';
   let urlWeather = 'http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22';
-  
   //Loading data
   newsData = loadJSON(urlNews);
-  // weatherData = loadJSON(urlWeather);
-  
-  soundFormats('mp3');
-  song1 = loadSound('oneofthemdays.mp3');
-  song2 = loadSound('shapeofyou.mp3');
+  //weatherData = loadJSON(urlWeather);
 }
 
 function setup() {
-  createCanvas(420, 460);
+  
+  let inp = createInput('');
+  inp.input(myInputEvent);
+  inp.position(0,700);
+  
+  //image(step_img, 0, 100, step_img.width / 8, step_img.height / 8);
+  //image(bed_img, 0, 130, bed_img.width / 8, bed_img.height / 8);
+  
+  //step_img = loadImage('steps2.png');
+  
+  canvas = createCanvas(900, 655);
+  canvas.position(0,0);
+  canvas.style('z-index', '-1');
+  
+  
+  //News button
+  newsButton = createImg('newsIcon.png');
+  newsButton.position(250, 590);
+  newsButton.size(50,50);
+  newsButton.mousePressed(newsTog);
+  newsButton.id('newsButton');
+  
+  //Calendar button
+  calendarButton = createImg('calendarIcon.png');
+  calendarButton.position(320, 590);
+  calendarButton.size(50,50);
+  calendarButton.mousePressed(calendarTog);
+  calendarButton.id('calendarButton');
+   document.getElementById("calendar").style.display = "none";
+  
+  
+  //Twitter button
+  twitterButton = createImg('small-twitter-icon-17.jpg');
+  twitterButton.position(390, 590);
+  twitterButton.size(50,50);
+  twitterButton.mousePressed(twitterTog);
+  document.getElementById("twitter").style.display = "none";
+  
+  //Spotify icon
+  twitterButton = createImg('spotifyIcon.jpg');
+  twitterButton.position(460, 588);
+  twitterButton.size(55,55);
+  twitterButton.mousePressed(spotifyTog);
+  document.getElementById("spotify").style.display = "none";
+  
+  //Health button
+  newsButton = createImg('healthIcon.png');
+  newsButton.position(530, 590);
+  newsButton.size(50,50);
+  newsButton.mousePressed(healthTog);
+
+  
   capture = createCapture(VIDEO);
   capture.size(420,460);
   capture.hide();
   textSize(14);
   fill(255);
-  s1pic = loadImage('oneofthemdays.png');
-  s2pic = loadImage('shapeofyou.png');
-  //Create, style and resize clickables.
-  click1 = new Clickable();
-  click1.locate(46, 405);
-  click1.resize(50,50);
+  capture.hide();
   
-  //Music playlist functions TiAra Carroll
-  //
-  //
-  //This function is ran when the clickable is hovered but not pressed.
-  click1.onHover = function(){
-	this.color = "#AAAAFF";
-	//this.textColor = "#FFFFFF";
-	//this.text = "Yay!";
-    
-  }
-  //This function is ran when the clickable is NOT hovered.
- click1.onOutside = function(){
-    this.color = "#CC0000";
-    this.textSize = 15;
-	this.textColor = "#000000";
-    
-  }
-  //This function is ran when the clickable is pressed.
-
-  //This funcion is ran when the cursor was pressed and then
-  //rleased inside the clickable. If it was pressed inside and
-  //then released outside this won't work.
-  click1.onRelease = function(){
-	  this.color = "#FF0000";
-    //loop()
-    //{
-      if(this.text = "Pause")
-      {
-        
-         if (clicks == 1)
-         {
-           song1.play();
-         }
-         click1.onPress = function()
-         {
-           click1.onRelease = function()
-           {
-             this.text = "Play";
-             if(song1.isPlaying() == true)
-             {
-               song1.pause();
-             }
-             else if(song2.isPlaying() == true)
-             {
-               song2.pause();
-             }
-             if(this.text = "Play")
-             {
-                click1.onPress = function()
-                 {
-                   click1.onRelease = function()
-                   {
-                     this.text = "Pause";
-                     if(song1.isPaused() == true)
-                     {
-                       song1.play();
-                     }
-                     else if(song2.isPaused() == true)
-                     {
-                       song2.play();
-                     }
-                     if(this.text = "Pause")
-                     {
-                       click1.onPress = function()
-                       {
-                         click1.onRelease = function()
-                         {
-                           this.text = "Play";
-                           if(song1.isPlaying() == true)
-                           {
-                             song1.pause();
-                           }
-                           else if(song2.isPlaying() == true)
-                           {
-                             song2.pause();
-                           }
-                           if(this.text = "Play")
-                           {
-                              click1.onPress = function()
-                           {
-                               click1.onRelease = function()
-                               {
-                                 this.text = "Pause";
-                                 if(song1.isPaused() == true)
-                                 {
-                                   song1.play();
-                                 }
-                                 else if(song2.isPaused() == true)
-                                 {
-                                   song2.play();
-                                 }
-                                 if(this.text = "Pause")
-                                 {
-                                   click1.onPress = function()
-                                   {
-                                     click1.onRelease = function()
-                                     {
-                                       this.text = "Play";
-                                       if(song1.isPlaying() == true)
-                           {
-                             song1.stop();
-                           }
-                           else if(song2.isPlaying() == true)
-                           {
-                             song2.stop();
-                           }
-                         
-                               }
-                            }
-                           }
-                         }
-                        }
-                      }
-    
-                      }
-                    }
-                  }   
-                  }
-         }
-      }
-  }
+  weather = Math.floor(Math.random() * 10)+55;
+  
 }
-      }
-    }
-}
-
 
 function draw() {
+  
   background(255);
-  imageCap =  image(capture,0,0,420,460);
+  imageCap =  image(capture,0,0,900,655);
   
-  //Time
-  textSize(15);
+  
   fill(255);
-  text(formatAMPM(new Date),20,20);
-  topThree(newsData);
+  textSize(22);
+  textStyle(BOLD);
+  text(formatAMPM(new Date),395,25);
   
-  //Music playlist draw applications
-  fill(0);
-  ellipse(27, 430, 33, 33);
-  ellipse(115, 430, 33, 33);
-  fill(96,96,96);
-  rect(3,400,136,65);
-  textSize(15);
-  //fill(0);
-  //text(clicks,68, 390);
-  click1.draw();
-  
-  translate(70, 380);
-  fill(v2);
-  tri = triangle(35,35, 60, 50, 35, 65);
-  translate(-75,15);
-  scale(0.85);
-  fill(v1);
-  tri2 = triangle(45, 20, 20, 40, 45, 60);
-  if(song1.isPlaying() == true || song1.isPaused() == true)
-  {
-    image(s1pic, 10, -150);
-    s1pic.resize(165,155);
-    
-  }
-  if(song2.isPlaying() == true || song2.isPaused() == true)
-  {
-    image(s2pic, 10, -150);
-    s2pic.resize(165,155);
+  if(healthButState==0){
+  fill("#838383");
+  rect(10, 535, 150, 70, 7);
+  fill(255);
+    textSize(18);
+    textStyle(BOLD);
+  text("Health",30, 555);
+    textSize(12);
+    textStyle(NORMAL);
+  text(values[6] + " steps",30, 575);
+  text(sleepyTime +" hours of sleep", 30, 595)
+  Health(steps, healthState);
   }
   
-  //image(forwardbtn, 0, 0);
-  //image(plaback, 0, 0);
   
-  //Weather
-  //getWeather(weatherData);
-  
-  
+
   //NewsFeed
+  if(newsState2 == 0){
+    topThree(newsData);
   getArticle(newsData,newsState);
-  // print(mouseX);
+  }
+  
+  
+
   
 }
 
-
 function mousePressed(){
-  let d = dist(mouseX, mouseY, 30, 300);
-  if(mouseY>=30 && mouseY<=120 && mouseX>=280 && mouseX<=400){
+  if(mouseY>=30 && mouseY<=150 && mouseX>=700 && mouseX<=900){
     if(mouseY>=30 && mouseY<=60){
-      if(mouseX>=280 && mouseX<=400){
+      if(mouseX>=700 && mouseX<=900){
         newsState = 0;
        }
     }
     if(mouseY>=60 && mouseY<=90){
-      if(mouseX>=280 && mouseX<=400){
+      if(mouseX>=700 && mouseX<=900){
         newsState = 1;
        }
     }
+    if(mouseY>=90 && mouseY<=120){
+      if(mouseX>=700 && mouseX<=900){
+        newsState = 2;
+       }
+    }
+    if(mouseY>=120 && mouseY<=150){
+      if(mouseX>=700 && mouseX<=900){
+        newsState = 3;
+       }
+    }
   }
- if (d)
- {
-    fill(255, 0, 0);
-    ellipse(30,300,45, 45);
- }
+  else if(mouseY>=535 && mouseY<=595 && mouseX>=10 && mouseX<=150){
+    if(mouseY>=535 && mouseY<=595){
+      if(mouseX>=10 && mouseX<=150){
+        healthState = 0;
+      }
+    }
 
-  
+  }
   else{
     newsState = -1;
-  }
-  
-  
-  clicks++;
-  let d1 = dist(mouseX, mouseY, 27, 430);
-  let d2 = dist(mouseX, mouseY, 115, 430);
-  if (d1 < 15)
-  {
-    if (v1 === 0) {
-     v1 = 255;
-    if(song1.isPlaying() == true )
-    {
-     song1.stop();
-     song2.play();
-     click1.onRelease();
-    }
-    if(song2.isPause() == true)
-    {
-      song2.pause();
-    }
-     } else {
-    v1 = 0;
-  }
-  }
-  if (d2 < 15)
-  {
-    if (v2 == 0)
-    {
-      v2 = 255;
-    // if(song1.isPlaying() == true )
-    //{
-     //song1.stop();
-     //song2.play();
-   // }
-   // if(song2.isPause() == true)
-   // {
-    //  song2.pause();
-   // }
-    
-    }
-       else
-       {
-         v2 = 0;
-       }
-    
+    healthState = -1;
   }
 }
 
-function mouseReleased()
-{
-  if(v1 == 255)
-  {
-    v1 = 0;
+function twitterTog(){
+  if(twitterState == 1){
+  document.getElementById("twitter").style.display = "block";
+    twitterState = 0;
   }
-  if(v2 == 255)
-  {
-    v2 = 0;
+  else{
+      document.getElementById("twitter").style.display = "none";
+    twitterState = 1;
   }
-  
 }
 
+function calendarTog(){
+  if(calendarState == 1){
+  document.getElementById("calendar").style.display = "block";
+    calendarState = 0;
+  }
+  else{
+      document.getElementById("calendar").style.display = "none";
+    calendarState = 1;
+  }
+}
 
+function spotifyTog(){
+  if(spotifyState == 1){
+  document.getElementById("spotify").style.display = "block";
+    spotifyState = 0;
+  }
+  else{
+      document.getElementById("spotify").style.display = "none";
+    spotifyState = 1;
+  }
+}
+
+function newsTog(){
+  if(newsState2 == 0){
+    newsState2 = 1;
+  }
+  else{
+    newsState2 = 0;
+  }
+}
+
+function healthTog(){
+  if(healthButState == 0){
+    healthButState = 1;
+  }
+  else{
+    healthButState = 0;
+  }
+}
 
 function getWeather(data){
   var weather = data.main.temp;
@@ -314,36 +234,46 @@ function getArticle(data,i){
   if(i==-1){
   }
   else{
-  imageCap =  image(capture,0,0,420,460);
+    
   textSize(15);
-  fill(255);
+  fill("#838383");
   // text(formatAMPM(new Date),20,20);
-  
-  rect(40, 40, 350, 350, 20);
+    
+  rect(335, 5, 350, 350, 20);
   
   //Title
   var title = data.articles[i].title
-  fill(0);
+  fill(255);
   textStyle(BOLD);
-  text(title,50, 50, 340, 390 );
+  text(title,340, 15, 340, 390 );
   
   //Body
   textSize(12);
   textStyle(NORMAL);
   var content = data.articles[i].content
-  text(content, 55,120,330,390);
+  if(content!=null){
+    text(content, 340,90,330,390);
+  }
+  else{
+    text("NO CONTENT TO SHOW", 340,90,330,390);
+  }
   
   //Description
   textSize(12);
   textStyle(NORMAL);
   var description = data.articles[i].description
-  text(description, 55,220,330,390);  
+  if(description!=null){
+  text(description, 340,185,330,390);  
+  }
+  else{
+    text("NO CONTENT TO SHOW", 340,185,330,390);
+  }
   
   //Published
   textSize(12);
   textStyle(NORMAL);
   var published = data.articles[i].publishedAt
-  text("Published at:\n"+published, 55,340,340,390);
+  text("Published at:\n"+published, 340,315,340,390);
   }
   
 }
@@ -361,22 +291,29 @@ function formatAMPM(date) {
 }
 
 function topThree(data){
+  fill("#838383");
+  rect(687, 03, 200, 150, 7);
   textSize(15);
-  text("News",290,20);
+  
+  fill(255);
+  text("News",700,20);
   var count = 30;
   
-  for(var i = 0; i<3; i++){
+  for(var i = 0; i<4; i++){
     var titles = data.articles[i].title;
     
-    if(titles.length>34){
-      titles = titles.substring(0,33);
+    if(titles.length>51){
+      titles = titles.substring(0,50);
       titles = titles+"...";
     }
+    fill(255);
     textSize(12);
-    text("-", 280,count,120,30);
-    text(titles, 290,count,120,30);
+    text("-", 690,count,160,30);
+    text(titles, 700,count,190,30);
     count+=30;
   }
+
+  //line(690, 150, 895, 150);
 }
 
 function gotData(data){
@@ -386,109 +323,94 @@ function gotData(data){
   }
 }
 
+function myInputEvent() {
+ 
+  auth = this.value();
 
-//Library code Clickables() TiAra Carroll addon
-
-var cl_mouseWasPressed = false;
-//Last hovered button
-var cl_lastHovered = null;
-//Last pressed button
-var cl_lastClicked = null;
-//All created buttons
-var cl_clickables = [];
-
-//This function is what makes the magic happen and should be ran after
-//each draw cycle.
-p5.prototype.runGUI = function(){
-	for(i = 0; i < cl_clickables.length; ++i){
-		if(cl_lastHovered != cl_clickables[i])
-			cl_clickables[i].onOutside();
-	}
-	if(cl_lastHovered != null){
-		if(cl_lastClicked != cl_lastHovered){
-			cl_lastHovered.onHover();
-		}
-	}
-	if(!cl_mouseWasPressed && cl_lastClicked != null){
-		cl_lastClicked.onPress();
-	}
-	if(cl_mouseWasPressed && !mouseIsPressed && cl_lastClicked != null){
-		if(cl_lastClicked == cl_lastHovered){
-			cl_lastClicked.onRelease();
-		}
-		cl_lastClicked = null;
-	}
-	cl_lastHovered = null;
-	cl_mouseWasPressed = mouseIsPressed;
+ 
 }
 
-p5.prototype.registerMethod('post', p5.prototype.runGUI);
+function keyPressed() {
+ 
+  if (keyCode === ENTER) {
+    
+    authCodeReady = true;
+    
+    var d = new Date();
+    var today = d.getTime() * 1000000;
+    
+   
+    
+    let urlFitness = 'https://www.googleapis.com/fitness/v1/users/me/dataSources/raw:com.google.step_count.delta:com.google.android.gms:appleinc.:iphone:com.apple.health.735e3053-ad38-4de2-8560-ab51e752a04b:derive_step_deltas/datasets/1572152400000000000-'+str(today);
+    let urlSleepy = 'https://www.googleapis.com/fitness/v1/users/me/sessions'
 
-//Button Class
-function Clickable(x,y){
-	this.x = x || 0;			//X position of the clickable
-	this.y = y || 0;			//Y position of the clickable
-	this.width = 100;			//Width of the clickable
-	this.height = 50;			//Height of the clickable
-	this.color = "#FFFFFF";			//Background color of the clickable
-	this.cornerRadius = 25;			//Corner radius of the clickable
-	this.strokeWeight = 2;			//Stroke width of the clickable
-	this.stroke = "#000000";		//Border color of the clickable
-	this.text = "Play";			//Text of the clickable
-	this.textColor = "#000000";		//Color for the text shown
-	this.textSize = 12;			//Size for the text shown
-	this.textFont = "sans-serif";		//Font for the text shown	
-	
-	this.onHover = function(){
-		//This function is ran when the clickable is hovered but not
-		//pressed.
-	}
-	
-	this.onOutside = function(){
-		//This function is ran when the clickable is NOT hovered.
-	}
-	
-	this.onPress = function(){
-		//This function is ran when the clickable is pressed.
-	}
-	
-	this.onRelease = function(){
-		//This funcion is ran when the cursor was pressed and then
-		//released inside the clickable. If it was pressed inside and
-		//then released outside this won't work.
-	}
-	
-	this.locate = function(x, y){
-		this.x = x;
-		this.y = y;
-	}
-	
-	this.resize = function(w, h){
-		this.width = w;
-		this.height = h;
-	}
-	
-	this.draw = function(){
-		fill(this.color);
-		stroke(this.stroke);
-		strokeWeight(this.strokeWeight);
-		rect(this.x, this.y, this.width, this.height, this.cornerRadius);
-		fill(this.textColor);
-		noStroke();
-		textAlign(CENTER, CENTER);
-		textSize(this.textSize);
-		textFont(this.textFont);
-		text(this.text, this.x+1, this.y+1, this.width, this.height);
-		if(mouseX >= this.x && mouseY >= this.y 
-		   && mouseX < this.x+this.width && mouseY < this.y+this.height){
-			cl_lastHovered = this;
-			if(mouseIsPressed && !cl_mouseWasPressed)
-				cl_lastClicked = this;
-		}
-	}
-	
-	cl_clickables.push(this);
+  httpDo(
+    urlFitness,
+    {
+      method: 'GET',
+      // Other Request options, like special headers for apis
+      headers: { authorization: 'Bearer '+ auth },
+    
+    },
+
+    function(res) {
+      fitnessData = JSON.parse(res);
+     
+      var index = 0;
+      
+      for (let i=0; i<fitnessData.point.length; ++i){
+        
+        step_int = fitnessData.point[i];
+      
+        index=6-Math.floor((today-step_int.startTimeNanos)/86400000000000);
+        
+        values[index] += step_int.value[0].intVal;
+    
+      }
+      
+    }
+  );
+    httpDo(
+      urlSleepy,
+      {
+        method: 'GET',
+        
+        headers: { authorization: 'Bearer '+ auth },
+      },
+      function(res){
+        dataSleep = JSON.parse(res);
+        
+        sleepyTime = int((dataSleep.session[3].endTimeMillis-dataSleep.session[3].startTimeMillis)/3600000);
+      }
+      );
+  }
 }
 
-  
-  
+function Health(data, i) {
+  if(i==-1){
+  }
+  else {
+
+    textSize(15);
+    fill(255);
+    
+    rect(250, 160, 350, 350, 20);
+    
+    for (var i = 0; i < values.length; i++) {
+      stroke(2);
+      fill(0,0,255);
+      rect(i * 39 + 290, 450-values[i]/55, 20, values[i]/55);
+      
+      text(values[i], i*38+290, 450-values[i]/55);
+      
+      text(5000, 7*35+290, 400-5000/55);
+      
+      text(10000, 7*35+290, 400-10000/55);
+      
+      
+      rect(255, 420-5000/55, 7*35+75, 1);
+      rect(255, 420-10000/55, 7*35+75, 1);
+    }
+    fill(255);
+  }
+}
