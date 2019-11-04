@@ -29,7 +29,7 @@ ROLES
  - Same circular shaped icons for unified design
  - Widgets have same rounded edge motif for familiarity
 ### FEEDBACK 
- - Widgets instantly pop in or exit for snappy feedback
+ - Widgets instantly pop in or exit for quick feedback
 ### SHORT TERM MEMORY LOAD
  - Actions do not take more than a simple click or swipe
 ### ERROR HANDLING
