@@ -37,6 +37,9 @@ TEAM MEMBERS
 - Benjamin Fischer
 - Nathanael Roskens
 
+ Mirror Link:
+ https://mbarbier9.github.io/uitest/index.html
+
 ## GOLDEN RULES OF DESIGN
 ### CONSISTENCY
  - Same circular shaped icons for unified design
@@ -48,6 +51,4 @@ TEAM MEMBERS
 ### ERROR HANDLING
  - User experience is enhanced by being shown error rather than having system crashing 
  
- Mirror Link:
- https://mbarbier9.github.io/uitest/index.html
  
