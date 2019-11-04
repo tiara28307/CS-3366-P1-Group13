@@ -19,9 +19,10 @@ ROLES
 - Mauricio Barbier: News Feed api and Time 
 - Bonny Barragan: Twitter api and Toggles
 
-ORIGINAL SKETCH
+### ORIGINAL SKETCH
 
 ![p1 13](https://user-images.githubusercontent.com/36643475/66956180-92e02800-f029-11e9-832d-71a9d374182f.png)
+
 
 ## GOLDEN RULES OF DESIGN
 ### CONSISTENCY
@@ -34,10 +35,13 @@ ORIGINAL SKETCH
 ### ERROR HANDLING
  - User experience is enhanced by being shown error rather than having system crashing 
  
- MIRROR
+ 
+### MIRROR
+ 
  
  
  ### Smart Mirror Link:
+ 
  
  https://mbarbier9.github.io/uitest/index.html 
 
