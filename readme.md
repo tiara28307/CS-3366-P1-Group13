@@ -36,8 +36,10 @@ ROLES
  - User experience is enhanced by being shown error rather than having system crashing 
  
  
-### MIRROR
- 
+### MIRROR DESIGN
+![screen1](https://user-images.githubusercontent.com/36643475/68098725-07b5bd80-fe84-11e9-8e63-46f0902e2054.png)
+
+![screen2](https://user-images.githubusercontent.com/36643475/68098727-0a181780-fe84-11e9-840b-461a08f64427.png)
  
  
  ### Smart Mirror Link:
