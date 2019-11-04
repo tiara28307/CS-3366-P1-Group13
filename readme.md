@@ -46,8 +46,7 @@ ROLES
  
  
  
- ### Smart Mirror Link:
- 
- 
- (https://mbarbier9.github.io/uitest/index.html)
+Smart Mirror Link:
+
+https://mbarbier9.github.io/uitest/index.html
 
