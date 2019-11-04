@@ -2,18 +2,18 @@
 Project 1: Personal Mirror 
 
 TEAM MEMBERS
-- Team Members already had pre obligations before this group photo was a requirement so here is our team photo. Enjoy!
+- We got a new photo! Yay!
   
 
-![Screen Shot 2019-10-17 at 8 04 57 PM](https://user-images.githubusercontent.com/36643475/67058223-81764900-f119-11e9-8e87-1841d86c5aa4.png)
+![IMG_4064](https://user-images.githubusercontent.com/36643475/68096876-4e51ea80-fe79-11e9-99b1-0310d6b08ed9.jpg)
 
   
 ROLES
-- Benjamin Fischer: Calendar and Time
-- Nathanael Roskens: Weather and Health information
-- Ti'Ara Carroll: Music/playlist api
-- Mauricio Barbier: News Feed api
-- Bonny Barragan:Text Message api
+- Benjamin Fischer: Calendar api
+- Nathanael Roskens: Health information
+- Ti'Ara Carroll: Spotify and Weather api
+- Mauricio Barbier: News Feed api and Time 
+- Bonny Barragan:Twitter api and Toggles
 
 SKETCH
 
